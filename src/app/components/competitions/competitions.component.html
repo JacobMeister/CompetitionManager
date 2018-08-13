@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-12">
+    <h3>Competitions Component</h3>
+    <div class="d-flex flex-row-reverse mb-1">
+      <button id="addNew" *ngIf="user$ | async as user" [routerLink]="['/competition/new']" class="btn btn-success ">Add new</button>
+    </div>
+    <app-competition-list [competitions]="competitions | async"></app-competition-list>
+  </div>
+</div>

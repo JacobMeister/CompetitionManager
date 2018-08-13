@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-md navbar-light navbar-toggleable-sm bg-light fixed-top">
+  <a class="navbar-brand" href="#">CompMan</a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" (click)="toggleCollapse()" aria-controls="exCollapsingNavbar2"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [ngbCollapse]="isNavBarCollapsed" class="collapse navbar-collapse" id="exCollapsingNavbar2">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/competitions">Competitions</a>
+      </li>
+    </ul>
+    <ng-container *ngIf="user$ | async as user; else notLoggedIn">
+      <div ngbDropdown class="d-inline-block" placement="bottom-right">
+        <button class="btn btn-outline-primary" id="user-menu" ngbDropdownToggle>{{user.name}}</button>
+        <div class="dropdown-menu" aria-labelledby="user-menu" ngbDropdownMenu>
+          <button [routerLink]="['/my-competitions']" class="dropdown-item btn btn-primary">My competitions</button>
+          <button [routerLink]="['/joined-competitions']" class="dropdown-item btn btn-primary">Joined competitions</button>
+          <button class="dropdown-item" (click)="logout()">Logout</button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #notLoggedIn>
+      <button (click)="loginWithGoogle()" class="btn btn-primary">Login</button>
+    </ng-template>
+  </div>
+</nav>

@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let competition of competitions">
+      <td>{{ competition.name }}</td>
+      <td>{{ competition.status | competitionstatus }}</td>
+      <td class="action-button-row">
+        <div class="action-buttons d-flex flex-row justify-content-between">
+          <div *ngIf="user$ | async as user" class="registration-options">
+            <div *ngIf="canSignUpForCompetition(competition, user);then sign_up_content else sign_out_content"></div>
+            <ng-template #sign_out_content>
+              <button *ngIf="canSignOutOfCompetition(competition, user)" class="btn btn-sm btn-primary" [swal]="{ title: 'Sign out', text: 'Are you sure you want to sign out of this competition?', type: 'question', showCancelButton: 'true' }"
+                (confirm)="signOut(competition, user)">Sign out</button>
+            </ng-template>
+            <ng-template #sign_up_content>
+              <button class="btn btn-sm btn-primary" [swal]="{ title: 'Sign up', text: 'Are you sure you want to sign up for this competition?', type: 'question', showCancelButton: 'true' }"
+                (confirm)="signUp(competition, user)">Sign up</button>
+            </ng-template>
+          </div>
+          <a [routerLink]="['/competition', competition.id]" class="btn btn-sm btn-success">Details</a>
+          <a [routerLink]="['/competition', competition.id, 'live']" class="btn btn-sm btn-default">Live</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
