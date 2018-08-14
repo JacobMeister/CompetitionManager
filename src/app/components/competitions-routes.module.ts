@@ -6,10 +6,6 @@ const routes: Routes = [
   {
     path: 'competitions',
     component: CompetitionsComponent
-  },
-  {
-    path: '',
-    component: CompetitionsComponent
   }
 ];
 
