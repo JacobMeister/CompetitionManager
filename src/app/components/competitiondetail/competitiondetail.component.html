@@ -1,0 +1,82 @@
+<h1>Competitions</h1>
+<div *ngIf="competition">
+  <h3>{{ competition.name }}</h3>
+  <button *ngIf="isOpen()" type="button" class="btn btn-success mb-1" (click)="openModal(editCompetitionForm)">Edit competition</button>
+
+  <ng-template #editCompetitionForm let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Edit competition</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Close click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-competition-form *ngIf="isOwnerOfCompetition(currentUser | async)" [competition]="editableCompetition" (update)="editCompetition($event)"
+        (cancelUpdate)="cancelEdit()"></app-competition-form>
+    </div>
+  </ng-template>
+
+  <ng-template #addPLayerModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Add player</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input #newUser id="typeahead-focus" type="text" class="form-control" (input)="0" [ngbTypeahead]="search" />
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="c('Close click'); addPlayer(newUser.value)">Add</button>
+    </div>
+  </ng-template>
+
+  <ng-template #editGameForm let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Edit game</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Close click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-game-form [game]="selectedGame" (save)="onGameSave($event); d('Saved')" (cancel)="d('Cancel Click')"></app-game-form>
+    </div>
+  </ng-template>
+
+  <ngb-tabset select>
+    <ngb-tab title="Players">
+      <ng-template ngbTabContent>
+        <table class="table table-striped" multiple>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th *ngIf="isOwnerOfCompetition(currentUser | async) && canAddPlayer() && isOpen()">
+              <button type="button" class="btn btn-success" (click)="openModal(addPLayerModal)">Add player</button>
+            </th>
+          </tr>
+          <tr *ngFor="let participant of participants">
+            <td>{{participant.uid}}</td>
+            <td>{{participant.name}}</td>
+            <td *ngIf="isOwnerOfCompetition(currentUser | async) && canAddPlayer() && isOpen()"></td>
+          </tr>
+        </table>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Games (Flat)">
+      <ng-template ngbTabContent>
+        <app-game-list [games]="games" [showEditButton]="isOwnerOfCompetition(currentUser | async)" (clickEditGame)="selectGame($event); openModal(editGameForm)"></app-game-list>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Games">
+      <ng-template ngbTabContent>
+        <app-competition-tournament *ngIf="isOfType(0)" [competition]="competition" [games]="games"></app-competition-tournament>
+        <app-competition-knockout-system *ngIf="isOfType(1)" [competition]="competition" [games]="games"></app-competition-knockout-system>
+        <app-competition-poule-system *ngIf="isOfType(2)" [competition]="competition" [games]="games"></app-competition-poule-system>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+
+  <div *ngIf="isOwnerOfCompetition(currentUser | async) && isOpen()">
+    <button [routerLink]="['/competition', competition.id, 'generate']" class="btn btn-success">Close registration</button>
+  </div>
+</div>

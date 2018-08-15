@@ -1,0 +1,32 @@
+<div class='wrapper'>
+  <div *ngFor="let poule of usersInPoules; let p = index">
+    <ng-container *ngIf="canDrag(); then can_drag else can_not_drag"></ng-container>
+
+    <ng-template #can_drag>
+      <table id="poule-{{p}}" class="gamesTable container" [dragula]='"poule-bag"'>
+        <ng-container [ngTemplateOutlet]="tableBody"></ng-container>
+      </table>
+    </ng-template>
+
+    <ng-template #can_not_drag>
+      <table id="poule-{{p}}" class="gamesTable container">
+        <ng-container [ngTemplateOutlet]="tableBody"></ng-container>
+      </table>
+    </ng-template>
+
+    <ng-template #tableBody>
+      <thead>
+        <tr>
+          <th>Poule {{getPouleLetter(p)}}</th>
+        </tr>
+      </thead>
+      <tbody id="user-{{user.uid}}" *ngFor="let user of poule; let u = index">
+        <tr>
+          <td>{{user.name}}</td>
+        </tr>
+      </tbody>
+    </ng-template>
+
+  </div>
+
+  <app-statusdisplay-poule [poules]="games | poules"></app-statusdisplay-poule>

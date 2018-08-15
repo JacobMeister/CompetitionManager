@@ -13,7 +13,6 @@ import { CoreModule } from './core/core.module';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { CompetitionsModule } from './components/competitions.module';
 import { RouterModule } from '@angular/router';
-import { CompetitionsRoutingModule } from './components/competitions-routes.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { CompetitionsRoutingModule } from './components/competitions-routes.modu
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AppRoutingModule,
-    CompetitionsRoutingModule,
     FormsModule,
     NgbModule.forRoot(),
     CoreModule,
