@@ -1,0 +1,48 @@
+<div class="errorMessage">
+  <p *ngFor="let error of errors">{{error}}</p>
+</div>
+
+<form #gameForm="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" [(ngModel)]="copy.name" id="name" placeholder="Name" name="name" required #name="ngModel">
+    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+      Name is required
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="score1">Player 1 score</label>
+      <input type="number" min="0" [(ngModel)]="copy.score1" class="form-control" id="score1" name="score1" #score1="ngModel" required>
+    </div>
+    <div class="form-group col">
+      <label for="score1">Player 2 score</label>
+      <input type="number" min="0" [(ngModel)]="copy.score2" class="form-control" id="score2" name="score2" #score2="ngModel" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="status">Status</label>
+      <select class="form-control" [value]="copy.status" (change)="copy.status = status.value/1" #status name="status" id="status"
+        required>
+        <option *ngFor="let status of gameStatus | keys" [value]="status.key">{{ status.value | titlecase }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label class="d-block">Start time</label>
+      <button class="btn btn-default mb-2" (click)="showTimePickerStart = true;">{{copy.start | date:'short'}}</button>
+      <dl-date-time-picker *ngIf="showTimePickerStart" #startDate [startDate]="copy.start" maxView="day" (change)="onPickStartDate(startDate.value)"></dl-date-time-picker>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label class="d-block">End time</label>
+      <button class="btn btn-default mb-2" (click)="showTimePickerEnd = true;">{{copy.end | date:'short'}}</button>
+      <dl-date-time-picker *ngIf="showTimePickerEnd" #endDate [startDate]="copy.end" maxView="day" (change)="onPickEndDate(endDate.value)"></dl-date-time-picker>
+    </div>
+  </div>
+</form>
+<button type="button" (click)="save.emit(copy)" class="btn btn-success" [disabled]="!gameForm.form.valid">Save</button>
+<button type="button" (click)="cancel.emit(false)" class="btn btn-default">Cancel</button>

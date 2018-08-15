@@ -1,0 +1,32 @@
+<div class='wrapper'>
+  <div *ngFor="let group of usersInGroups; let g = index">
+    <ng-container *ngIf="canDrag(); then can_drag else can_not_drag"></ng-container>
+
+    <ng-template #can_drag>
+      <table id="group-{{g}}" class="gamesTable container" [dragula]='"group-bag"'>
+        <ng-container [ngTemplateOutlet]="tableBody"></ng-container>
+      </table>
+    </ng-template>
+
+    <ng-template #can_not_drag>
+      <table id="group-{{g}}" class="gamesTable container">
+        <ng-container [ngTemplateOutlet]="tableBody"></ng-container>
+      </table>
+    </ng-template>
+
+    <ng-template #tableBody>
+      <thead>
+        <tr>
+          <th>Group {{(g + 1)}}</th>
+        </tr>
+      </thead>
+      <tbody id="user-{{user.uid}}" *ngFor="let user of group; let u = index">
+        <tr>
+          <td>{{user.name}}</td>
+        </tr>
+      </tbody>
+    </ng-template>
+  </div>
+</div>
+
+<app-statusdisplay-knockout [rounds]="games | rounds"></app-statusdisplay-knockout>

@@ -17,6 +17,13 @@ import { CompetitionsRoutingModule } from './competitions-routes.module';
 import { CompetitionDetailComponent } from './competitiondetail/competitiondetail.component';
 import { JoinedCompetitionsComponent } from './joined-competitions/joined-competitions.component';
 import { CompetitionTournamentComponent } from './competition-tournament/competition-tournament.component';
+import { CompetitionPouleSystemComponent } from './competition-poule/competition-poule.component';
+import { CompetitionKnockoutSystemComponent } from './competition-knockout/competition-knockout.component';
+import { GameFormComponent } from './game-form/game-form.component';
+import { GameListComponent } from './game-list/game-list.component';
+import { LiveViewComponent } from './live-view/live-view.component';
+import { RoundsPipe } from './Pipes/rounds.pipe';
+import { PoulesPipe } from './Pipes/poules.pipe';
 
 @NgModule({
   imports: [
@@ -40,16 +47,16 @@ import { CompetitionTournamentComponent } from './competition-tournament/competi
     NewCompetitionComponent,
     // CompetitionGamesGeneratorComponent,
     CompetitionTournamentComponent,
-    // CompetitionKnockoutSystemComponent,
-    // CompetitionPouleSystemComponent,
+    CompetitionKnockoutSystemComponent,
+    CompetitionPouleSystemComponent,
     MyCompetitionsComponent,
     JoinedCompetitionsComponent,
-    // RoundsPipe,
+    RoundsPipe,
     CompetitionFormComponent,
-    // GameListComponent,
-    // GameFormComponent,
-    // LiveViewComponent,
-    // PoulesPipe
+    GameListComponent,
+    GameFormComponent,
+    LiveViewComponent,
+    PoulesPipe
   ]
 })
 export class CompetitionsModule {}

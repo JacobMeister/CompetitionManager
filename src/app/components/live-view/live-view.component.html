@@ -1,0 +1,7 @@
+<h1>Live game view</h1>
+<p>Last update {{updateText}}</p>
+<div *ngIf="$competition | async; let competition" [ngSwitch]="competition.type">
+  <app-statusdisplay-tournament *ngSwitchCase="competitionType.TOURNAMENT" [rounds]="$games | async | rounds"></app-statusdisplay-tournament>
+  <app-statusdisplay-knockout *ngSwitchCase="competitionType.KNOCKOUT" [rounds]="$games | async | rounds"></app-statusdisplay-knockout>
+  <app-statusdisplay-poule *ngSwitchCase="competitionType.POULE" [poules]="$games | async | poules"></app-statusdisplay-poule>
+</div>

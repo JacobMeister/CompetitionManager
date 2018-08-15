@@ -1,0 +1,28 @@
+$poule-spacing: 10px;
+@mixin margin-tb($margin) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+.wrapper {
+  table {
+    font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    @include margin-tb($poule-spacing);
+    td,
+    th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    tr:hover {
+      background-color: #ddd;
+    }
+    th {
+      @include margin-tb(12px);
+      text-align: left;
+      background-color: #4caf50;
+      color: white;
+    }
+  }
+}

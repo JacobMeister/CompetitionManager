@@ -1,0 +1,17 @@
+<div class="knockout-display">
+  <ul *ngFor="let round of rounds" class="round">
+    <li class="spacer">&nbsp;</li>
+
+    <ng-template ngFor let-game [ngForOf]="round">
+      <li class="game game-top" [class.winner]="game.done === 1 && game.player1.winner">{{game.player1.name}}
+        <span>{{game.player1.score}}</span>
+      </li>
+      <li class="game game-spacer">&nbsp;</li>
+      <li class="game game-bottom" [class.winner]=" game.done && game.player2.winner">{{game.player2.name}}
+        <span>{{game.player1.score}}</span>
+      </li>
+
+      <li class="spacer">&nbsp;</li>
+    </ng-template>
+  </ul>
+</div>
