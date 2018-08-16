@@ -24,18 +24,20 @@ import { GameListComponent } from './game-list/game-list.component';
 import { LiveViewComponent } from './live-view/live-view.component';
 import { RoundsPipe } from './Pipes/rounds.pipe';
 import { PoulesPipe } from './Pipes/poules.pipe';
+import { StatusModule } from '../view/status.module';
+import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    // StatusdisplayModule,
     CoreModule,
+    StatusModule,
     CompetitionsRoutingModule,
     SweetAlert2Module,
     NgbModule,
     DragulaModule.forRoot(),
-    // DlDateTimePickerDateModule
+    DlDateTimePickerDateModule,
     RouterModule
   ],
   declarations: [

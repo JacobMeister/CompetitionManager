@@ -29,14 +29,16 @@ import { StatusModule } from './view/status.module';
     NgbModule.forRoot(),
     CoreModule,
     StatusModule,
+    CompetitionsModule,
+    RouterModule,
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
-  }),
-  CompetitionsModule,
-  RouterModule
+    }),
+  
+  
 
   ],
   providers: [],
