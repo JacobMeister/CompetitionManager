@@ -4,7 +4,7 @@ import { CompetitionsComponent } from './competitions/competitions.component';
 import { NewCompetitionComponent } from './new-competition/new-competition.component';
 import { AuthGuard } from '../core/services/auth.guard';
 import { MyCompetitionsComponent } from './my-competitions/my-competitions.component';
-import { CompetitionDetailComponent } from './competitiondetail/competitiondetail.component';
+import { CompetitionDetailComponent } from './competition-detail/competition-detail.component';
 import { JoinedCompetitionsComponent } from './joined-competitions/joined-competitions.component';
 import { LiveViewComponent } from './live-view/live-view.component';
 

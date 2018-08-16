@@ -5,19 +5,19 @@ import { GameService } from '../../core/services/game.service';
 import { UserService } from '../../core/services/user.service';
 import { DragulaService } from 'ng2-dragula';
 @Component({
-  selector: 'app-competition-knockout-system',
-  templateUrl: './competition-knockout-system.component.html',
-  styleUrls: ['./competition-knockout-system.component.scss']
+  selector: 'app-competition-knockout',
+  templateUrl: './competition-knockout.component.html',
+  styleUrls: ['./competition-knockout.component.scss']
 })
-export class CompetitionKnockoutSystemComponent implements OnInit {
+export class CompetitionKnockoutComponent implements OnInit {
   @Input() public competition: Competition;
   @Input() public games: KnockoutGame[];
   public usersInGroups: [UserInfo[]];
   public canDragItems: boolean;
 
   constructor(private gs: GameService, private us: UserService, private dragulaService: DragulaService) {
-    dragulaService.drop.subscribe(value => {
-      this.onDrop(value.slice(1));
+    dragulaService.drop("competition").subscribe(value => {
+      this.onDrop(value);
     });
   }
 
@@ -41,10 +41,10 @@ export class CompetitionKnockoutSystemComponent implements OnInit {
   }
 
   private onDrop(args) {
-    const [element, toContainer, fromContainer] = args;
-    const uid = element['id'].replace('user-', '');
-    const toGroupIndex = toContainer['id'].replace('group-', '');
-    const fromGroupIndex = fromContainer['id'].replace('group-', '');
+    const [el, target, source] = args;
+    const uid = el['id'].replace('user-', '');
+    const toGroupIndex = target['id'].replace('group-', '');
+    const fromGroupIndex = source['id'].replace('group-', '');
 
     const userIndex = this.usersInGroups[fromGroupIndex].findIndex(u => {
       if (u.uid === uid) {

@@ -14,11 +14,11 @@ import { NewCompetitionComponent } from './new-competition/new-competition.compo
 import { MyCompetitionsComponent } from './my-competitions/my-competitions.component';
 import { CompetitionFormComponent } from './competition-form/competition-form.component';
 import { CompetitionsRoutingModule } from './competitions-routes.module';
-import { CompetitionDetailComponent } from './competitiondetail/competitiondetail.component';
+import { CompetitionDetailComponent } from './competition-detail/competition-detail.component';
 import { JoinedCompetitionsComponent } from './joined-competitions/joined-competitions.component';
 import { CompetitionTournamentComponent } from './competition-tournament/competition-tournament.component';
-import { CompetitionPouleSystemComponent } from './competition-poule/competition-poule.component';
-import { CompetitionKnockoutSystemComponent } from './competition-knockout/competition-knockout.component';
+import { CompetitionPouleComponent } from './competition-poule/competition-poule.component';
+import { CompetitionKnockoutComponent } from './competition-knockout/competition-knockout.component';
 import { GameFormComponent } from './game-form/game-form.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { LiveViewComponent } from './live-view/live-view.component';
@@ -47,8 +47,8 @@ import { PoulesPipe } from './Pipes/poules.pipe';
     NewCompetitionComponent,
     // CompetitionGamesGeneratorComponent,
     CompetitionTournamentComponent,
-    CompetitionKnockoutSystemComponent,
-    CompetitionPouleSystemComponent,
+    CompetitionKnockoutComponent,
+    CompetitionPouleComponent,
     MyCompetitionsComponent,
     JoinedCompetitionsComponent,
     RoundsPipe,

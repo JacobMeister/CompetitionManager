@@ -13,6 +13,7 @@ import { CoreModule } from './core/core.module';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { CompetitionsModule } from './components/competitions.module';
 import { RouterModule } from '@angular/router';
+import { StatusModule } from './view/status.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     NgbModule.forRoot(),
     CoreModule,
+    StatusModule,
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',

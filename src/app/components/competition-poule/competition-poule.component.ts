@@ -6,11 +6,11 @@ import { GameStatus, PouleGame } from '../../core/models/Game';
 import { DragulaService } from 'ng2-dragula';
 
 @Component({
-  selector: 'app-competition-poule-system',
-  templateUrl: './competition-poule-system.component.html',
-  styleUrls: ['./competition-poule-system.component.scss']
+  selector: 'app-competition-poule',
+  templateUrl: './competition-poule.component.html',
+  styleUrls: ['./competition-poule.component.scss']
 })
-export class CompetitionPouleSystemComponent implements OnInit {
+export class CompetitionPouleComponent implements OnInit {
   @Input() public competition: Competition;
   @Input() public games: PouleGame[];
   public usersInPoules: [UserInfo[]];
@@ -18,8 +18,8 @@ export class CompetitionPouleSystemComponent implements OnInit {
   public canDragItems: boolean;
 
   constructor(private gs: GameService, private us: UserService, private dragulaService: DragulaService) {
-    dragulaService.drop.subscribe(value => {
-      this.onDrop(value.slice(1));
+    dragulaService.drop("competition").subscribe(value => {
+      this.onDrop(value);
     });
   }
 
@@ -52,10 +52,10 @@ export class CompetitionPouleSystemComponent implements OnInit {
   }
 
   private onDrop(args) {
-    const [element, toContainer, fromContainer] = args;
-    const uid = element['id'].replace('user-', '');
-    const toPouleIndex = toContainer['id'].replace('poule-', '');
-    const fromPouleIndex = fromContainer['id'].replace('poule-', '');
+    const [el, target, source] = args;
+    const uid = el['id'].replace('user-', '');
+    const toPouleIndex = target['id'].replace('poule-', '');
+    const fromPouleIndex = source['id'].replace('poule-', '');
 
     const userIndex = this.usersInPoules[fromPouleIndex].findIndex(u => {
       if (u.uid === uid) {

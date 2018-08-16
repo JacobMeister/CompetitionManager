@@ -70,8 +70,8 @@
     <ngb-tab title="Games">
       <ng-template ngbTabContent>
         <app-competition-tournament *ngIf="isOfType(0)" [competition]="competition" [games]="games"></app-competition-tournament>
-        <app-competition-knockout-system *ngIf="isOfType(1)" [competition]="competition" [games]="games"></app-competition-knockout-system>
-        <app-competition-poule-system *ngIf="isOfType(2)" [competition]="competition" [games]="games"></app-competition-poule-system>
+        <app-competition-knockout *ngIf="isOfType(1)" [competition]="competition" [games]="games"></app-competition-knockout>
+        <app-competition-poule *ngIf="isOfType(2)" [competition]="competition" [games]="games"></app-competition-poule>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>
