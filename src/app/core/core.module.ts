@@ -9,11 +9,12 @@ import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
 import { KeysPipe } from './pipes/keys.pipe';
+import { ResolverService } from './services/resolver.service';
 
 @NgModule({
   imports: [CommonModule, AngularFirestoreModule, AngularFireAuthModule],
   declarations: [KeysPipe],
-  providers: [CompetitionService, GameService, UserService, AuthService, AuthGuard],
+  providers: [CompetitionService, GameService, UserService, AuthService, AuthGuard, ResolverService],
   exports: [KeysPipe]
 })
 export class CoreModule {}

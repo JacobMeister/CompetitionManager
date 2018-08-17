@@ -1,7 +1,7 @@
-<h1>Competitions</h1>
+
 <div *ngIf="competition">
-  <h3>{{ competition.name }}</h3>
-  <button *ngIf="isOpen()" type="button" class="btn btn-success mb-1" (click)="openModal(editCompetitionForm)">Edit competition</button>
+  <h1>{{ competition.name }}</h1>
+  <button *ngIf="isOwnerOfCompetition(currentUser | async)" type="button" class="btn btn-success mb-1" (click)="openModal(editCompetitionForm)">Edit competition</button>
 
   <ng-template #editCompetitionForm let-c="close" let-d="dismiss">
     <div class="modal-header">
@@ -48,15 +48,15 @@
       <ng-template ngbTabContent>
         <table class="table table-striped" multiple>
           <tr>
-            <th>Id</th>
             <th>Name</th>
+            <th>Email</th>
             <th *ngIf="isOwnerOfCompetition(currentUser | async) && canAddPlayer() && isOpen()">
               <button type="button" class="btn btn-success" (click)="openModal(addPLayerModal)">Add player</button>
             </th>
           </tr>
           <tr *ngFor="let participant of participants">
-            <td>{{participant.uid}}</td>
             <td>{{participant.name}}</td>
+            <td>{{participant.email}}</td>
             <td *ngIf="isOwnerOfCompetition(currentUser | async) && canAddPlayer() && isOpen()"></td>
           </tr>
         </table>

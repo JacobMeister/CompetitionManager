@@ -7,6 +7,7 @@ import { MyCompetitionsComponent } from './my-competitions/my-competitions.compo
 import { CompetitionDetailComponent } from './competition-detail/competition-detail.component';
 import { JoinedCompetitionsComponent } from './joined-competitions/joined-competitions.component';
 import { LiveViewComponent } from './live-view/live-view.component';
+import { ResolverService } from '../core/services/resolver.service';
 
 
 const competitionsRoutes: Routes = [
@@ -31,7 +32,8 @@ const competitionsRoutes: Routes = [
   },
   {
     path: 'competition/:id',
-    component: CompetitionDetailComponent
+    component: CompetitionDetailComponent,
+    resolve: { competition: ResolverService }
   },
   {
     path: 'competition/:id/live',

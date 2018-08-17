@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-toggleable-sm bg-light fixed-top">
-  <a class="navbar-brand" href="#">CompMan</a>
+<nav class="navbar navbar-expand-md navbar-dark navbar-toggleable-sm bg-dark fixed-top">
+  <img class="navbar-brand" src="assets/MLC-Logo.png" height="40px" href="#">
   <button class="navbar-toggler navbar-toggler-right" type="button" (click)="toggleCollapse()" aria-controls="exCollapsingNavbar2"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,7 +7,7 @@
   <div [ngbCollapse]="isNavBarCollapsed" class="collapse navbar-collapse" id="exCollapsingNavbar2">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/competitions">Competitions</a>
+        <a class="nav-link" routerLink="/competitions">Major League Competitions</a>
       </li>
     </ul>
     <ng-container *ngIf="user$ | async as user; else notLoggedIn">
