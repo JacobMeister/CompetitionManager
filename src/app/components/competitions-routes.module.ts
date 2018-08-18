@@ -8,6 +8,7 @@ import { CompetitionDetailComponent } from './competition-detail/competition-det
 import { JoinedCompetitionsComponent } from './joined-competitions/joined-competitions.component';
 import { LiveViewComponent } from './live-view/live-view.component';
 import { ResolverService } from '../core/services/resolver.service';
+import { CompetitionGeneratorComponent } from './competition-generator/competition-generator.component';
 
 
 const competitionsRoutes: Routes = [
@@ -39,12 +40,12 @@ const competitionsRoutes: Routes = [
     path: 'competition/:id/live',
     component: LiveViewComponent
   },
-  // {
-  //   path: 'competition/:id/generate',
-  //   component: CompetitionGamesGeneratorComponent,
-  //   resolve: { competition: CompetitionResolverService },
-  //   canActivate: [AuthGuard]
-  // }
+  {
+    path: 'competition/:id/generate',
+    component: CompetitionGeneratorComponent,
+    resolve: { competition: ResolverService },
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

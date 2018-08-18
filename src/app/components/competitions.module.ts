@@ -19,6 +19,7 @@ import { JoinedCompetitionsComponent } from './joined-competitions/joined-compet
 import { CompetitionTournamentComponent } from './competition-tournament/competition-tournament.component';
 import { CompetitionPouleComponent } from './competition-poule/competition-poule.component';
 import { CompetitionKnockoutComponent } from './competition-knockout/competition-knockout.component';
+import { CompetitionGeneratorComponent } from './competition-generator/competition-generator.component';
 import { GameFormComponent } from './game-form/game-form.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { LiveViewComponent } from './live-view/live-view.component';
@@ -47,7 +48,7 @@ import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
     CompetitionstatusPipe,
     GamestatusPipe,
     NewCompetitionComponent,
-    // CompetitionGamesGeneratorComponent,
+    CompetitionGeneratorComponent,
     CompetitionTournamentComponent,
     CompetitionKnockoutComponent,
     CompetitionPouleComponent,

@@ -1,0 +1,52 @@
+<div class="errorMessage">
+  <p *ngFor="let error of errors">{{error}}</p>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h2>Generate competition games</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <form #generatorForm="ngForm">
+      <div class="form-group">
+        <div class="form-group">
+          <label for="maxGames">Maximum simultaneous games</label>
+          <input type="number" class="form-control" id="maxGames" name="maxGames" min="1" value="1" [(ngModel)]="competition.simultaneousGames"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="duration">Duration in minutes</label>
+          <input type="number" class="form-control" id="duration" name="duration" min="1" value="90" [(ngModel)]="competition.durationGame"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="startDate">Start date competition</label>
+          <input type="date" class="form-control" id="startDate" name="startDate" [(ngModel)]="competition.startDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="startTimeDay">Start time</label>
+          <input type="time" class="form-control" id="startTimeDay" name="startTimeDay" [(ngModel)]="competition.startTimeDay" required>
+        </div>
+
+        <div class="form-group">
+          <label for="endTimeDay">End time</label>
+          <input type="time" class="form-control" id="endTimeDay" name="endTimeDay" [(ngModel)]="competition.endTimeDay" required>
+        </div>
+
+        <div class="form-group">
+          <label for="players">Players</label>
+          <select [(ngModel)]="competition.participants" class="form-control" name="players" multiple>
+            <option *ngFor="let user of users" [value]="user">{{ user.name }}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <button type="button" (click)="validate()" class="btn btn-success" [disabled]="!generatorForm.form.valid">Generate</button>
+  </div>
+</div>
