@@ -1,4 +1,3 @@
-import Game from './Game';
 
 export enum CompetitionStatus {
   OPEN,

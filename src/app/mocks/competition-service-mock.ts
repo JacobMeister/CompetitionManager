@@ -7,17 +7,17 @@ export class CompetitionServiceMock {
   
     public getCompetition(id: string): Observable<Competition> {
       return Observable.of({
-        id: 'ID 1',
-        name: 'Competition 1',
-        owner: { uid: '123456789', name: 'owner' },
-        type: 0,
-        status: 0,
-        games: {},
-        durationGame: 90,
-        maxParticipants: 8,
-        participants: {},
-        startDate: '2018-08-18',
-        simultaneousGames: 2
+        id: 'id' ,
+            name: 'competitie' ,
+            owner: { uid: '1', name: 'owner' },
+            type: 0,
+            status: 0,
+            games: {},
+            durationGame: 60,
+            maxParticipants: 8,
+            participants: {},
+            startDate: '2020-08-18',
+            simultaneousGames: 2
       });
     }
   
@@ -27,16 +27,16 @@ export class CompetitionServiceMock {
   
         for (let i = 0; i < 10; i++) {
           const competition: Competition = {
-            id: 'ID' + i,
-            name: 'Competition ' + i,
-            owner: { uid: '123456789', name: 'owner' },
+            id: 'id' + i,
+            name: 'competitie' + i,
+            owner: { uid: '1', name: 'owner' },
             type: 0,
             status: 0,
             games: {},
-            durationGame: 90,
+            durationGame: 60,
             maxParticipants: 8,
             participants: {},
-            startDate: '2018-08-18',
+            startDate: '2020-08-18',
             simultaneousGames: 2
           };
   
@@ -56,16 +56,16 @@ export class CompetitionServiceMock {
   
         for (let i = 0; i < 7; i++) {
           const competition: Competition = {
-            id: 'ID' + i,
-            name: 'Competition ' + i,
-            owner: { uid: '123456789', name: 'owner' },
+            id: 'id' + i,
+            name: 'competitie' + i,
+            owner: { uid: '1', name: 'owner' },
             type: 0,
             status: 0,
             games: {},
-            durationGame: 90,
+            durationGame: 60,
             maxParticipants: 8,
             participants: {},
-            startDate: '2018-08-18',
+            startDate: '2020-08-18',
             simultaneousGames: 2
           };
   
@@ -83,16 +83,16 @@ export class CompetitionServiceMock {
   
         for (let i = 0; i < 4; i++) {
           const competition: Competition = {
-            id: 'ID' + i,
-            name: 'Competition ' + i,
-            owner: { uid: '123456789', name: 'owner' },
+            id: 'id' + i,
+            name: 'competitie' + i,
+            owner: { uid: '1', name: 'owner' },
             type: 0,
             status: 0,
             games: {},
-            durationGame: 90,
+            durationGame: 60,
             maxParticipants: 8,
             participants: {},
-            startDate: '2018-08-18',
+            startDate: '2020-08-18',
             simultaneousGames: 2
           };
   

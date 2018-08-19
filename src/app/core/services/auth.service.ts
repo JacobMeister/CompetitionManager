@@ -8,17 +8,6 @@ import { UserService } from './user.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 
-// export interface LoginCredentials {
-//   email: string;
-//   password: string;
-// }
-
-// export interface RegistrationCredentials {
-//   name: string;
-//   email: string;
-//   password: string;
-//   passwordConfirmation: string;
-// }
 
 @Injectable()
 export class AuthService {
@@ -64,24 +53,11 @@ export class AuthService {
 
   public loginWithGooglePopup(): Promise<any> {
     return this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(data => {
-      // Add user to users collection if new User
       if (data && data.additionalUserInfo.isNewUser) {
         this.us.addUser(data.user.email, data.user.displayName, data.user.uid);
       }
     });
   }
-
-  // public login(credentials: LoginCredentials): Promise<any> {
-  //   return this.auth.auth.signInWithEmailAndPassword(credentials.email, credentials.password);
-  // }
-
-  // public register(credentials: RegistrationCredentials): Promise<any> {
-  //   return this.auth.auth
-  //     .createUserAndRetrieveDataWithEmailAndPassword(credentials.email, credentials.password)
-  //     .then(data => {
-  //       this.us.addUser(data.user.email, credentials.name, data.user.uid);
-  //     });
-  // }
 
   public logout() {
     this.auth.auth.signOut();

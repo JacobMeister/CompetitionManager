@@ -88,17 +88,13 @@ export interface GeneratorInfo {
     }
   
     isValid(player: UserInfo, opponent: UserInfo, games: { [id: string]: Game }) {
-      // Check if undefined
       if (player === undefined || opponent === undefined) {
         return false;
       }
-  
-      // Check different player and opponent
       if (player.uid === opponent.uid) {
         return false;
       }
   
-      // Check valid game
       const game = Object.entries(games).find(g => {
         if (g[1].player1.uid === player.uid && g[1].player2.uid === opponent.uid) {
           return true;
@@ -169,7 +165,6 @@ export interface GeneratorInfo {
           break;
         }
   
-        // Start at next day
         this.start.setDate(this.start.getDate() + 1);
         this.start = new Date(this.start.toDateString() + ' ' + this.generatorInfo.startTimeDay);
         this.end = new Date(this.start.getTime() + minutes * this.generatorInfo.duration);

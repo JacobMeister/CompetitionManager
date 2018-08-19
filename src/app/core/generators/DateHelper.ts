@@ -21,11 +21,9 @@ export class DateHelper {
     }
   
     validateDateIsInTheFuture(startDate: Date) {
-      // Validate start date
       const currentDate = new Date(this.getCurrentDate());
   
       if (startDate.getTime() < currentDate.getTime()) {
-        // Start date in the past
         return false;
       }
   

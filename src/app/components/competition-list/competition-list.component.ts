@@ -5,7 +5,6 @@ import { UserService } from '../../core/services/user.service';
 import { AuthService } from '../../core/services/auth.service';
 import User from '../../core/models/User';
 import { Observable } from 'rxjs/Observable';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-competition-list',

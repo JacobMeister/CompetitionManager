@@ -42,7 +42,6 @@ export class GameService {
       .toPromise();
     await batch.commit();
 
-    // Delete references
     try {
       const deleteGames = { games: {} };
       await this.db
@@ -69,7 +68,6 @@ export class GameService {
 
     await batch.commit();
 
-    // Update competition relationship
     let updateCompetition = {};
 
     if (competition['poules'] === undefined) {
@@ -137,12 +135,10 @@ export class GameService {
   private updateKnockoutWinner(game: KnockoutGame): Game {
     game.winner = game.score1 > game.score2 ? 1 : 2;
 
-    // Update next game
     const update = {};
     update['player' + game.nextPlayer] = game['player' + game.winner];
     this.gameCollection.doc(game.nextGameId).update(update);
 
-    // Return game with new winner
     return game;
   }
 

@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import Competition, { CompetitionType, CompetitionStatus } from '../models/Competition';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import User from '../models/User';
-import { firestore } from 'firebase';
 import Game from '../models/Game';
 
 @Injectable()
@@ -21,11 +19,7 @@ export class CompetitionService {
     return this.competitions$;
   }
 
-  /**
-   * Add a competition
-   *
-   * @param competition The competition to add
-   */
+  
   public addCompetition(
     owner: User,
     name: string,
@@ -50,7 +44,6 @@ export class CompetitionService {
     };
     this.competitionsCollection.doc<Competition>(id).set(competition);
 
-    // Update relation on user
     owner.ownedCompetitions[id] = true;
     this.db
       .collection('users')

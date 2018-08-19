@@ -4,7 +4,7 @@ import { CompetitionService } from "../../core/services/competition.service";
 import { AuthService } from "../../core/services/auth.service";
 import User from "../../core/models/User";
 import { Router } from "@angular/router";
-import { DateHelper } from "../../core/services/DateHelper";
+import { DateHelper } from "../../core/Generators/DateHelper";
 
 @Component({
   selector: 'app-competition-form',
