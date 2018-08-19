@@ -9,7 +9,6 @@ import { AuthService } from '../../core/services/auth.service';
 import KnockoutGenerator from '../../core/Generators/KnockoutGenerator';
 import TournamentGenerator from '../../core/Generators/TournamentGenerator';
 import PouleGenerator from '../../core/Generators/PouleGenerator';
-import { DateHelper } from '../../core/Generators/DateHelper';
 import GeneratorStarter from '../../core/Generators/GeneratorStarter';
 
 @Component({
@@ -22,7 +21,6 @@ export class CompetitionGeneratorComponent implements OnInit {
   users: User[];
   generators: Generator[];
   errors: string[];
-  dateHelper: DateHelper;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +30,6 @@ export class CompetitionGeneratorComponent implements OnInit {
     private us: UserService,
     private auth: AuthService
   ) {
-    this.dateHelper = new DateHelper();
   }
 
   ngOnInit() {
@@ -51,10 +48,6 @@ export class CompetitionGeneratorComponent implements OnInit {
 
   validate() {
     this.errors = [];
-
-    if (!this.dateHelper.validateDateIsInTheFuture(new Date(this.competition.startDate))) {
-      this.errors.push('Start date is in the past.');
-    }
     const amountOfPlayers = Object.entries(this.competition.participants).length;
     if (amountOfPlayers > this.competition.maxParticipants) {
       this.errors.push('Maximum of ' + this.competition.maxParticipants + ' players exceeded.');

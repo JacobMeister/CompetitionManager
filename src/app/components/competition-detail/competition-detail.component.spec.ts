@@ -11,7 +11,6 @@ import { DragulaModule } from 'ng2-dragula';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import Competition from '../../core/models/Competition';
-import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
 import { KeysPipe } from '../../core/pipes/keys.pipe';
 import { RoundsPipe } from '../Pipes/rounds.pipe';
 import { CompetitionKnockoutComponent } from '../competition-knockout/competition-knockout.component';
@@ -63,7 +62,6 @@ describe('CompetitionDetailComponent', () => {
         FormsModule,
         NgbModule.forRoot(),
         DragulaModule,
-        DlDateTimePickerDateModule
       ],
       declarations: [
         CompetitionDetailComponent,

@@ -25,9 +25,5 @@ export default class Competition {
   participants: { [id: string]: UserInfo };
   games: { [id: string]: string };
   owner: UserInfo;
-  startDate: string;
-  durationGame: number;
-  startTimeDay?: number;
-  endTimeDay?: number;
   simultaneousGames?: number;
 }

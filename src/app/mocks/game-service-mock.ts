@@ -19,8 +19,6 @@ export class GameServiceMock {
             status: GameStatus.OPEN,
             competition: { id: 'competition id', name: 'competition name' },
             type: 0,
-            start: new Date(2018, 8, 18, 9, 30, 0, 0),
-            end: new Date(2018, 8, 18, 11, 0, 0, 0),
             player1: { uid: 'p1uid' + i, name: 'p1name' + i },
             player2: { uid: 'p2uid' + i, name: 'p2name' + i },
             winner: 0,
