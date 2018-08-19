@@ -32,11 +32,6 @@
       <label for="startDate">Start date competition</label>
       <input type="date" class="form-control" id="startDate" name="startDate" [(ngModel)]="competition.startDate" required>
     </div>
-    <div class="form-group col">
-      <label for="duration">Duration in minutes</label>
-      <input type="number" class="form-control" id="duration" name="duration" min="1" value="90" [(ngModel)]="competition.durationGame"
-        required>
-    </div>
   </div>
 </form>
 <button id="saveCompetition" type="button" (click)="save()" class="btn btn-success" [disabled]="!competitionForm.form.valid">Save</button>

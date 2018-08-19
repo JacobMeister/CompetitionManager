@@ -29,20 +29,6 @@
       </select>
     </div>
   </div>
-  <div class="row">
-    <div class="form-group col">
-      <label class="d-block">Start time</label>
-      <button class="btn btn-default mb-2" (click)="showTimePickerStart = true;">{{copy.start | date:'short'}}</button>
-      <dl-date-time-picker *ngIf="showTimePickerStart" #startDate [startDate]="copy.start" maxView="day" (change)="onPickStartDate(startDate.value)"></dl-date-time-picker>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group col">
-      <label class="d-block">End time</label>
-      <button class="btn btn-default mb-2" (click)="showTimePickerEnd = true;">{{copy.end | date:'short'}}</button>
-      <dl-date-time-picker *ngIf="showTimePickerEnd" #endDate [startDate]="copy.end" maxView="day" (change)="onPickEndDate(endDate.value)"></dl-date-time-picker>
-    </div>
-  </div>
 </form>
 <button type="button" (click)="save.emit(copy)" class="btn btn-success" [disabled]="!gameForm.form.valid">Save</button>
 <button type="button" (click)="cancel.emit(false)" class="btn btn-default">Cancel</button>
