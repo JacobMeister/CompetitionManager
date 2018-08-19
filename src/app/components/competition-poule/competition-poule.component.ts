@@ -4,6 +4,8 @@ import { UserService } from '../../core/services/user.service';
 import { GameService } from '../../core/services/game.service';
 import { GameStatus, PouleGame } from '../../core/models/Game';
 import { DragulaService } from 'ng2-dragula';
+import GeneratorStarter from '../../core/Generators/GeneratorStarter';
+import PouleGenerator from '../../core/Generators/PouleGenerator';
 
 @Component({
   selector: 'app-competition-poule',
@@ -29,7 +31,6 @@ export class CompetitionPouleComponent implements OnInit {
 
   ngOnInit() {
     this.usersInPoules = [[]];
-    // Users in poule
     Object.entries(this.competition['poules']).forEach(([pouleLetter, userInfos]) => {
       const index = pouleLetter.charCodeAt(0) - 65;
       this.usersInPoules[index] = [];
@@ -40,11 +41,14 @@ export class CompetitionPouleComponent implements OnInit {
     });
 
     this.canDragItems = true;
-    this.games.forEach(game => {
-      if (game.status === GameStatus.FINISHED) {
-        this.canDragItems = false;
-      }
-    });
+    if(this.games){
+      this.games.forEach(game => {
+        if (game.status === GameStatus.FINISHED) {
+          this.canDragItems = false;
+        }
+      });
+    }
+    
   }
 
   getPouleLetter(index) {
@@ -75,8 +79,8 @@ export class CompetitionPouleComponent implements OnInit {
   }
 
   generatePoule() {
-    // const generatorStarter = new GeneratorStarter(this.gs, this.us);
-    // const generator = new PouleGenerator();
-    // generatorStarter.generateWithSpecificPouleOrder(generator, this.competition, this.usersInPoules);
+    const generatorStarter = new GeneratorStarter(this.gs, this.us);
+    const generator = new PouleGenerator();
+    generatorStarter.generateWithSpecificPouleOrder(generator, this.competition, this.usersInPoules);
   }
 }

@@ -1,39 +1,44 @@
-/*import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompetitionGeneratorComponent } from './competition-generator.component';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { DateHelper } from '../../core/Generators/DateHelper';
+import { CompetitionGeneratorComponent } from './competition-generator.component';
+import Competition from '../../core/models/Competition';
 import { CompetitionService } from '../../core/services/competition.service';
 import { GameService } from '../../core/services/game.service';
 import { UserService } from '../../core/services/user.service';
 import { AuthService } from '../../core/services/auth.service';
-import { FormsModule } from '@angular/forms';
-import Competition from '../../core/models/Competition';
-import { Observable } from 'rxjs/Observable';
+import { CompetitionServiceMock } from '../../mocks/competition-service-mock';
+import { GameServiceMock } from '../../mocks/game-service-mock';
+import { UserServiceMock } from '../../mocks/user-service-mock';
+import { AuthServiceMock } from '../../mocks/auth-service-mock';
 
-describe('CompetitionGamesGeneratorComponent', () => {
+describe('CompetitionGeneratorComponent', () => {
   let component: CompetitionGeneratorComponent;
   let fixture: ComponentFixture<CompetitionGeneratorComponent>;
 
   beforeEach(async(() => {
     const days = 10;
-    //const dateHelper = new DateHelper();
+    const dateHelper = new DateHelper();
     const date = new Date();
     date.setDate(date.getDate() + days);
 
-    const competition: Competition = {
-      id: 'Competition ID',
-      name: 'Competition',
-      owner: { uid: '123456789', name: 'owner' },
+    const competition = {
+      id: 'id',
+      name: 'competitie',
+      owner: { uid: '1', name: 'owner' },
       type: 0,
       status: 0,
       games: {},
-      durationGame: 90,
+      durationGame: 60,
       maxParticipants: 8,
       participants: {},
-      startDate: dateHelper.formatDate(date),
+      startDate: '2020-08-18',
       simultaneousGames: 2
     };
 
@@ -43,7 +48,7 @@ describe('CompetitionGamesGeneratorComponent', () => {
       imports: [RouterModule.forRoot([]), BrowserModule, CommonModule, FormsModule, NgbModule.forRoot()],
       declarations: [CompetitionGeneratorComponent],
       providers: [
-        { provide: APP_BASE_HREF, useValue: '/competition/DWohKT5IJGr2qZpi0DGY' },
+        { provide: APP_BASE_HREF, useValue: '/competition/oDJcCFO0HKB1MIDvmYBi' },
         {
           provide: ActivatedRoute,
           useValue: { data: Observable.of(data) }
@@ -73,16 +78,16 @@ describe('CompetitionGamesGeneratorComponent', () => {
     date.setDate(date.getDate() + days);
 
     expect(component.competition).toEqual({
-      id: 'Competition ID',
-      name: 'Competition',
-      owner: { uid: '123456789', name: 'owner' },
+      id: 'id',
+      name: 'competitie',
+      owner: { uid: '1', name: 'owner' },
       type: 0,
       status: 0,
       games: {},
-      durationGame: 90,
+      durationGame: 60,
       maxParticipants: 8,
       participants: {},
-      startDate: dateHelper.formatDate(date),
+      startDate: '2020-08-18',
       simultaneousGames: 2
     });
   });
@@ -111,4 +116,4 @@ describe('CompetitionGamesGeneratorComponent', () => {
     component.validate();
     expect(component.errors.length).toEqual(0);
   });
-});*/
+});
