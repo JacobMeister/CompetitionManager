@@ -4,7 +4,6 @@ import { CompetitionService } from "../../core/services/competition.service";
 import { AuthService } from "../../core/services/auth.service";
 import User from "../../core/models/User";
 import { Router } from "@angular/router";
-import { DateHelper } from "../../core/services/DateHelper";
 
 @Component({
   selector: 'app-competition-form',
@@ -21,9 +20,6 @@ export class CompetitionFormComponent implements OnInit {
 
   constructor(private cs: CompetitionService, private router: Router, private auth: AuthService) {
     this.competition = new Competition();
-    const dateHelper = new DateHelper();
-    this.competition.startDate = dateHelper.getCurrentDate();
-    this.competition.durationGame = 90;
     this.auth.user.subscribe(user => {
       this.user = user;
     });
@@ -31,18 +27,12 @@ export class CompetitionFormComponent implements OnInit {
 
   ngOnInit() {}
 
-  save() {
-    this.errors = [];
-    const dateHelper = new DateHelper();
-    if (!dateHelper.validateDateIsInTheFuture(new Date(this.competition.startDate))) {
-      this.errors.push('Start date is in the past. Change the start date of the competition.');
-    } else {
+  save() {    
       this.update.emit({
         user: this.user,
         type: this.competitionType,
         competition: this.competition
       });
-    }
   }
 
   cancel() {

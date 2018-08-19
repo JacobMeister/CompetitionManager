@@ -4,8 +4,6 @@
     <th>Player 1</th>
     <th>Player 2</th>
     <th>Status</th>
-    <th>Start</th>
-    <th>End time</th>
     <th *ngIf="showEditButton">&nbsp;</th>
   </tr>
   <tr *ngFor="let game of games">
@@ -13,8 +11,6 @@
     <td>{{game.player1.name}}</td>
     <td>{{game.player2.name}}</td>
     <td>{{game.status | gamestatus}}</td>
-    <td>{{game.start | date:'short'}}</td>
-    <td>{{game.end | date:'shortTime'}}</td>
     <td *ngIf="showEditButton" class="action-buttons">
       <button class="btn btn-success" (click)="onClickEdit(game)">Edit</button>
     </td>

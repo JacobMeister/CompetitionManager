@@ -9,8 +9,6 @@ export enum GameStatus {
     status: GameStatus = GameStatus.OPEN;
     competition: { id: string; name: string };
     type: number;
-    start: Date;
-    end: Date;
     player1: { uid: string; name: string };
     score1: number;
     player2: { uid: string; name: string };

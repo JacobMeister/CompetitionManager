@@ -1,6 +1,5 @@
 import Competition, { UserInfo } from '../models/Competition';
 import Game from '../models/Game';
-import { DateHelper } from './DateHelper';
 
 export interface GeneratorInfo {
     competition: Competition;
@@ -8,10 +7,6 @@ export interface GeneratorInfo {
     id: string;
     name: string;
     simultaneousGames: number;
-    duration: number;
-    startDateAndTime: Date;
-    startTimeDay: number;
-    endTimeDay: number;
   }
   
   export interface GeneratorResult {
@@ -21,8 +16,6 @@ export interface GeneratorInfo {
   
   export default class Generator {
     generatorInfo: GeneratorInfo;
-    start: Date;
-    end: Date;
     amountCreatedGames: number;
     amountPlayers: number;
     amountGames: number;
@@ -51,10 +44,7 @@ export interface GeneratorInfo {
     }
   
     reset(generatorInfo) {
-      this.generatorInfo = generatorInfo;
-      this.start = this.generatorInfo.startDateAndTime;
-      this.end = new Date(this.start.getTime() + 60000 * this.generatorInfo.duration);
-  
+      this.generatorInfo = generatorInfo;  
       this.currentSimultaneousGames = 0;
       this.amountCreatedGames = 0;
       this.round = 1;
@@ -155,49 +145,6 @@ export interface GeneratorInfo {
       });
   
       return isFound;
-    }
-  
-    calculateNextDateAndTimeOfGame() {
-      const minutes = 60 * 1000;
-      let isValid = false;
-  
-      while (!isValid) {
-        this.start = new Date(this.start.getTime() + minutes * this.generatorInfo.duration);
-        this.end = new Date(this.start.getTime() + minutes * this.generatorInfo.duration);
-        if (this.isValidTime(this.start) && this.isValidTime(this.end)) {
-          isValid = true;
-          break;
-        }
-  
-        // Start at next day
-        this.start.setDate(this.start.getDate() + 1);
-        this.start = new Date(this.start.toDateString() + ' ' + this.generatorInfo.startTimeDay);
-        this.end = new Date(this.start.getTime() + minutes * this.generatorInfo.duration);
-        isValid = true;
-      }
-    }
-  
-    isValidTime(time: Date): boolean {
-      const dateHelper = new DateHelper();
-      const currentDate = dateHelper.getCurrentDate();
-      const startTimeDay = new Date(currentDate + ' ' + this.generatorInfo.startTimeDay);
-      const endTimeDay = new Date(currentDate + ' ' + this.generatorInfo.endTimeDay);
-  
-      if (
-        time.getHours() < startTimeDay.getHours() ||
-        (time.getHours() === startTimeDay.getHours() && time.getMinutes() < startTimeDay.getMinutes())
-      ) {
-        return false;
-      }
-  
-      if (
-        time.getHours() > endTimeDay.getHours() ||
-        (time.getHours() === endTimeDay.getHours() && time.getMinutes() > endTimeDay.getMinutes())
-      ) {
-        return false;
-      }
-  
-      return true;
     }
   }
   

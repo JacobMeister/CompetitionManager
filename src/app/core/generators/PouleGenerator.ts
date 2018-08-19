@@ -9,10 +9,6 @@ export interface GroupsGeneratorInfo {
   id: string;
   name: string;
   simultaneousGames: number;
-  duration: number;
-  startDateAndTime: Date;
-  startTimeDay: number;
-  endTimeDay: number;
 }
 
 export default class PouleGenerator extends Generator {
@@ -207,7 +203,6 @@ export default class PouleGenerator extends Generator {
       this.checkIfPlayerIsInRoundAndPoule(player1, this.round, pouleLetter.charCodeAt(0)) ||
       this.checkIfPlayerIsInRound(player2, this.round, pouleLetter.charCodeAt(0))
     ) {
-      this.calculateNextDateAndTimeOfGame();
       this.round++;
       this.currentSimultaneousGames = 0;
     }
@@ -218,8 +213,6 @@ export default class PouleGenerator extends Generator {
       status: GameStatus.OPEN,
       competition: { id: this.generatorInfo.id, name: this.generatorInfo.name },
       type: 0,
-      start: this.start,
-      end: this.end,
       player1: player1,
       score1: 0,
       player2: player2,
@@ -231,7 +224,6 @@ export default class PouleGenerator extends Generator {
     this.games['ID' + this.amountCreatedGames] = game;
 
     if (this.currentSimultaneousGames === this.generatorInfo.simultaneousGames) {
-      this.calculateNextDateAndTimeOfGame();
       this.round++;
       this.currentSimultaneousGames = 0;
     }

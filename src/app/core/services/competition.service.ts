@@ -31,8 +31,6 @@ export class CompetitionService {
     name: string,
     type: CompetitionType,
     maxParticipants: number,
-    startDate: string,
-    durationGame: number
   ) {
     const id = this.db.createId();
     const competition: Competition = {
@@ -44,9 +42,6 @@ export class CompetitionService {
       owner: { uid: owner.uid, name: owner.name },
       participants: {},
       games: {},
-      startDate: startDate,
-      durationGame: durationGame
-
     };
     this.competitionsCollection.doc<Competition>(id).set(competition);
 

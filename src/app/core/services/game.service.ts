@@ -76,8 +76,6 @@ export class GameService {
       updateCompetition = {
         games: competition.games,
         status: CompetitionStatus.PLAYING,
-        startTimeDay: competition.startTimeDay,
-        endTimeDay: competition.endTimeDay,
         participants: competition.participants,
         simultaneousGames: competition.simultaneousGames
       };
@@ -85,8 +83,6 @@ export class GameService {
       updateCompetition = {
         games: competition.games,
         status: CompetitionStatus.PLAYING,
-        startTimeDay: competition.startTimeDay,
-        endTimeDay: competition.endTimeDay,
         participants: competition.participants,
         simultaneousGames: competition.simultaneousGames,
         poules: competition['poules']
