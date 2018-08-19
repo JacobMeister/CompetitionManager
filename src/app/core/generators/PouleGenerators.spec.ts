@@ -60,10 +60,8 @@ describe('PouleGenerator', () => {
         type: 0,
         status: 0,
         games: {},
-        durationGame: 60,
         maxParticipants: 8,
         participants: {},
-        startDate: '2020-08-18',
         simultaneousGames: 2
     };
 
@@ -73,10 +71,6 @@ describe('PouleGenerator', () => {
       id: competition.id,
       name: competition.name,
       simultaneousGames: competition.simultaneousGames,
-      duration: competition.durationGame,
-      startDateAndTime: new Date(),
-      startTimeDay: 8000000,
-      endTimeDay: 9000000
     };
 
     const generatorResult: GeneratorResult = pouleGenerator.generate(generatorInfo);
@@ -104,10 +98,8 @@ describe('PouleGenerator', () => {
         type: 0,
         status: 0,
         games: {},
-        durationGame: 60,
         maxParticipants: 8,
         participants: {},
-        startDate: '2020-08-18',
         simultaneousGames: 2
     };
 
@@ -117,10 +109,6 @@ describe('PouleGenerator', () => {
       id: competition.id,
       name: competition.name,
       simultaneousGames: competition.simultaneousGames,
-      duration: competition.durationGame,
-      startDateAndTime: new Date(),
-      startTimeDay: 8000000,
-      endTimeDay: 9000000
     };
 
     const generatorResult: GeneratorResult = pouleGenerator.generate(generatorInfo);

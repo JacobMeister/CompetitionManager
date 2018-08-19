@@ -84,10 +84,8 @@ describe('KnockoutGenerator', () => {
         type: 0,
         status: 0,
         games: {},
-        durationGame: 60,
         maxParticipants: 8,
         participants: {},
-        startDate: '2020-08-18',
         simultaneousGames: 2
     };
 
@@ -97,10 +95,6 @@ describe('KnockoutGenerator', () => {
       id: competition.id,
       name: competition.name,
       simultaneousGames: competition.simultaneousGames,
-      duration: competition.durationGame,
-      startDateAndTime: new Date(),
-      startTimeDay: 8000000,
-      endTimeDay: 9000000
     };
 
     const generatorResult: GeneratorResult = knockoutGenerator.generate(generatorInfo);
@@ -122,10 +116,8 @@ describe('KnockoutGenerator', () => {
         type: 0,
         status: 0,
         games: {},
-        durationGame: 60,
         maxParticipants: 8,
         participants: {},
-        startDate: '2020-08-18',
         simultaneousGames: 2
     };
 
@@ -135,10 +127,6 @@ describe('KnockoutGenerator', () => {
       id: competition.id,
       name: competition.name,
       simultaneousGames: competition.simultaneousGames,
-      duration: competition.durationGame,
-      startDateAndTime: new Date(),
-      startTimeDay: 8000000,
-      endTimeDay: 9000000
     };
 
     const generatorResult: GeneratorResult = knockoutGenerator.generate(generatorInfo);

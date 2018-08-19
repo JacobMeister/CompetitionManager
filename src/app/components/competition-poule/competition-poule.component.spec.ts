@@ -46,10 +46,8 @@ describe('CompetitionPouleSystemComponent', () => {
       type: 0,
       status: 0,
       games: {},
-      durationGame: 60,
       maxParticipants: 8,
       participants: {},
-      startDate: '2020-08-18',
       simultaneousGames: 2
     };
 
