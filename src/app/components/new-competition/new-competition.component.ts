@@ -20,8 +20,6 @@ export class NewCompetitionComponent implements OnInit {
         event['competition'].name,
         event['competition'].type,
         event['competition'].maxParticipants,
-        event['competition'].startDate,
-        event['competition'].durationGame
       );
       this.router.navigate(['/competitions']);
     }

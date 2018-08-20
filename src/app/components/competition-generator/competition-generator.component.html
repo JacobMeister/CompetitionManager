@@ -18,11 +18,6 @@
         </div>
 
         <div class="form-group">
-          <label for="startDate">Start date competition</label>
-          <input type="date" class="form-control" id="startDate" name="startDate" [(ngModel)]="competition.startDate" required>
-        </div>
-
-        <div class="form-group">
           <label for="players">Players</label>
           <select [(ngModel)]="competition.participants" class="form-control" name="players" multiple>
             <option *ngFor="let user of users" [value]="user">{{ user.name }}</option>

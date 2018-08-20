@@ -75,10 +75,6 @@ export default class KnockoutGenerator extends Generator {
     for (let round = 1; round <= this.rounds; round++) {
       const gamesInRound = this.getAmountOfGamesInRound(this.amountPlayers, round);
 
-      if (round > this.previousRound && this.currentSimultaneousGames > 0) {
-        this.calculateNextDateAndTimeOfGame();
-      }
-
       for (let game = 1; game <= gamesInRound; game++) {
         let player1: UserInfo = { uid: '?', name: '?' };
         let player2: UserInfo = { uid: '?', name: '?' };
@@ -117,8 +113,6 @@ export default class KnockoutGenerator extends Generator {
       status: GameStatus.OPEN,
       competition: { id: this.generatorInfo.id, name: this.generatorInfo.name },
       type: 1,
-      start: this.start,
-      end: this.end,
       player1: player1,
       score1: 0,
       player2: player2,
@@ -138,7 +132,6 @@ export default class KnockoutGenerator extends Generator {
     this.games[this.amountCreatedGames.toString()] = knockoutGame;
 
     if (this.currentSimultaneousGames === this.generatorInfo.simultaneousGames) {
-      this.calculateNextDateAndTimeOfGame();
       this.currentSimultaneousGames = 0;
     }
   }

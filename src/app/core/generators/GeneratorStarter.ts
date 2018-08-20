@@ -1,5 +1,4 @@
 import Competition, { CompetitionType, UserInfo } from '../models/Competition';
-import { DateHelper } from './DateHelper';
 import { GeneratorInfo, GeneratorResult } from './Generator';
 import { GameService } from '../services/game.service';
 import { GroupsGeneratorInfo } from './PouleGenerator';
@@ -7,14 +6,11 @@ import { UserService } from '../services/user.service';
 import User from '../models/User';
 
 export default class GeneratorStarter {
-  dateHelper: DateHelper;
 
   constructor(private gs: GameService, private us: UserService) {
-    this.dateHelper = new DateHelper();
   }
 
   generateWithSpecificPouleOrder(generator, competition: Competition, usersInPoules: [UserInfo[]]) {
-    const startDateAndTime = this.dateHelper.combineDateAndTime(competition.startDate, competition.startTimeDay);
 
     const generatorInfo: GroupsGeneratorInfo = {
       competition: competition,
@@ -22,10 +18,6 @@ export default class GeneratorStarter {
       id: competition.id,
       name: competition.name,
       simultaneousGames: competition.simultaneousGames,
-      duration: competition.durationGame,
-      startDateAndTime: startDateAndTime,
-      startTimeDay: competition.startTimeDay,
-      endTimeDay: competition.endTimeDay
     };
 
     const generatorResult: GeneratorResult = generator.generateWithPoules(generatorInfo);
@@ -75,18 +67,12 @@ export default class GeneratorStarter {
       participants = competitionParticipants;
     }
 
-    const startDateAndTime = this.dateHelper.combineDateAndTime(competition.startDate, competition.startTimeDay);
-
     const generatorInfo: GeneratorInfo = {
       competition: competition,
       participants: participants,
       id: competition.id,
       name: competition.name,
       simultaneousGames: competition.simultaneousGames,
-      duration: competition.durationGame,
-      startDateAndTime: startDateAndTime,
-      startTimeDay: competition.startTimeDay,
-      endTimeDay: competition.endTimeDay
     };
 
     const generatorResult: GeneratorResult = generator.generate(generatorInfo);

@@ -43,7 +43,6 @@ export default class TournamentGenerator extends Generator {
       this.checkIfPlayerIsInRound(player1, this.round, this.games) ||
       this.checkIfPlayerIsInRound(player2, this.round, this.games)
     ) {
-      this.calculateNextDateAndTimeOfGame();
       this.round++;
       this.currentSimultaneousGames = 0;
     }
@@ -54,8 +53,6 @@ export default class TournamentGenerator extends Generator {
       status: GameStatus.OPEN,
       competition: { id: this.generatorInfo.id, name: this.generatorInfo.name },
       type: 0,
-      start: this.start,
-      end: this.end,
       player1: player1,
       score1: 0,
       player2: player2,
@@ -66,7 +63,6 @@ export default class TournamentGenerator extends Generator {
     this.games['ID' + this.amountCreatedGames] = game;
 
     if (this.currentSimultaneousGames === this.generatorInfo.simultaneousGames) {
-      this.calculateNextDateAndTimeOfGame();
       this.round++;
       this.currentSimultaneousGames = 0;
     }

@@ -19,16 +19,14 @@ describe('LiveViewComponent', () => {
   let fixture: ComponentFixture<LiveViewComponent>;
 
   const competition: Competition = {
-    id: 'id',
+      id: 'id',
       name: 'competitie',
       owner: { uid: '1', name: 'owner' },
       type: 0,
       status: 0,
       games: {},
-      durationGame: 60,
       maxParticipants: 8,
       participants: {},
-      startDate: '2020-08-18',
       simultaneousGames: 2
   };
 

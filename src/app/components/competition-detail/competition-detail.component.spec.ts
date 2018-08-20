@@ -11,7 +11,6 @@ import { DragulaModule } from 'ng2-dragula';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import Competition from '../../core/models/Competition';
-import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
 import { KeysPipe } from '../../core/pipes/keys.pipe';
 import { RoundsPipe } from '../Pipes/rounds.pipe';
 import { CompetitionKnockoutComponent } from '../competition-knockout/competition-knockout.component';
@@ -46,10 +45,8 @@ describe('CompetitionDetailComponent', () => {
       type: 0,
       status: 0,
       games: {},
-      durationGame: 60,
       maxParticipants: 8,
       participants: {},
-      startDate: '2020-08-18',
       simultaneousGames: 2
     };
 
@@ -65,7 +62,6 @@ describe('CompetitionDetailComponent', () => {
         FormsModule,
         NgbModule.forRoot(),
         DragulaModule,
-        DlDateTimePickerDateModule
       ],
       declarations: [
         CompetitionDetailComponent,
@@ -108,10 +104,8 @@ describe('CompetitionDetailComponent', () => {
       type: 0,
       status: 0,
       games: {},
-      durationGame: 60,
       maxParticipants: 8,
       participants: {},
-      startDate: '2020-08-18',
       simultaneousGames: 2
     };
 
@@ -132,10 +126,8 @@ describe('CompetitionDetailComponent', () => {
       type: 0,
       status: 0,
       games: {},
-      durationGame: 60,
       maxParticipants: 8,
       participants: {},
-      startDate: '2020-08-18',
       simultaneousGames: 2
     });
   });
