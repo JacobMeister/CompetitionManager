@@ -6,9 +6,8 @@ import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { DateHelper } from '../../core/Generators/DateHelper';
+import { DateHelper } from '../../core/generators/DateHelper';
 import { CompetitionGeneratorComponent } from './competition-generator.component';
-import Competition from '../../core/models/Competition';
 import { CompetitionService } from '../../core/services/competition.service';
 import { GameService } from '../../core/services/game.service';
 import { UserService } from '../../core/services/user.service';
@@ -24,7 +23,6 @@ describe('CompetitionGeneratorComponent', () => {
 
   beforeEach(async(() => {
     const days = 10;
-    const dateHelper = new DateHelper();
     const date = new Date();
     date.setDate(date.getDate() + days);
 

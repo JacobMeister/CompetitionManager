@@ -11,18 +11,14 @@ export default class TournamentGenerator extends Generator {
     this.resetPlayersAndGames();
 
     while (this.amountCreatedGames < this.amountGames) {
-      // Player 1
       const player1 = this.getRandomPlayer(undefined, this.games);
       this.registerPlayer(player1);
 
-      // Player 2
       let player2: UserInfo;
       while (player2 === undefined || player2 === null) {
         player2 = this.getRandomPlayer(player1, this.games);
       }
       this.registerPlayer(player2);
-
-      // Create game
       this.createGame(player1, player2);
     }
 

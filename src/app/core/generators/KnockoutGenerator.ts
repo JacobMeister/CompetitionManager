@@ -84,18 +84,15 @@ export default class KnockoutGenerator extends Generator {
         let player2: UserInfo = { uid: '?', name: '?' };
 
         if (round === 1) {
-          // Player 1
           player1 = this.getRandomPlayer(undefined, this.games);
           this.registerPlayer(player1);
 
-          // Player 2
           do {
             player2 = this.getRandomPlayer(player1, this.games);
           } while (player1.uid === player2.uid);
           this.registerPlayer(player2);
         }
 
-        // Create game
         this.createGame(round, player1, player2);
 
         this.previousRound = round;
@@ -131,8 +128,7 @@ export default class KnockoutGenerator extends Generator {
       nextPlayer: this.nextPlayer,
       round: round
     };
-
-    // Next game and player reference
+    
     this.nextPlayer++;
     if (this.nextPlayer === 3) {
       this.nextPlayer = 1;

@@ -4,8 +4,8 @@ import { KnockoutGame, GameStatus } from '../../core/models/Game';
 import { UserService } from '../../core/services/user.service';
 import { GameService } from '../../core/services/game.service';
 import { DragulaService } from 'ng2-dragula';
-import KnockoutGenerator from '../../core/Generators/KnockoutGenerator';
-import GeneratorStarter from '../../core/Generators/GeneratorStarter';
+import GeneratorStarter from '../../core/generators/GeneratorStarter';
+import KnockoutGenerator from '../../core/generators/KnockoutGenerator';
 
 @Component({
   selector: 'app-competition-knockout',

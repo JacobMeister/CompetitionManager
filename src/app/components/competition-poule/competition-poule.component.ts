@@ -4,8 +4,8 @@ import { UserService } from '../../core/services/user.service';
 import { GameService } from '../../core/services/game.service';
 import { GameStatus, PouleGame } from '../../core/models/Game';
 import { DragulaService } from 'ng2-dragula';
-import GeneratorStarter from '../../core/Generators/GeneratorStarter';
-import PouleGenerator from '../../core/Generators/PouleGenerator';
+import GeneratorStarter from '../../core/generators/GeneratorStarter';
+import PouleGenerator from '../../core/generators/PouleGenerator';
 
 @Component({
   selector: 'app-competition-poule',

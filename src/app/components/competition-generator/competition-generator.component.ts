@@ -6,11 +6,11 @@ import { CompetitionService } from '../../core/services/competition.service';
 import { GameService } from '../../core/services/game.service';
 import { UserService } from '../../core/services/user.service';
 import { AuthService } from '../../core/services/auth.service';
-import KnockoutGenerator from '../../core/Generators/KnockoutGenerator';
-import TournamentGenerator from '../../core/Generators/TournamentGenerator';
-import PouleGenerator from '../../core/Generators/PouleGenerator';
-import { DateHelper } from '../../core/Generators/DateHelper';
-import GeneratorStarter from '../../core/Generators/GeneratorStarter';
+import KnockoutGenerator from '../../core/generators/KnockoutGenerator';
+import TournamentGenerator from '../../core/generators/TournamentGenerator';
+import PouleGenerator from '../../core/generators/PouleGenerator';
+import { DateHelper } from '../../core/generators/DateHelper';
+import GeneratorStarter from '../../core/generators/GeneratorStarter';
 
 @Component({
   selector: 'app-competition-generator',
